@@ -1,10 +1,36 @@
-// Override Game Lab sound functions to prevent crashes
+// --- CUSTOM AUDIO ENGINE FOR GITHUB PAGES ---
+// This keeps track of playing sounds so we can stop them later
+window.activeAudio = {};
+
 window.playSound = function(soundURL, loop) {
-    console.log("Sound bypassed: " + soundURL);
+    // Create a new HTML5 audio element
+    var audio = new Audio(soundURL);
+    
+    // Set it to loop if your code asks for it (like boss themes)
+    if (loop === true) {
+        audio.loop = true;
+    }
+    
+    // Save it to our tracking list
+    window.activeAudio[soundURL] = audio;
+    
+    // Play it (browsers require users to click the page before audio can play)
+    audio.play().catch(function(error) {
+        console.log("Waiting for user interaction to play: " + soundURL);
+    });
 };
+
 window.stopSound = function(soundURL) {
-    console.log("Stop sound bypassed: " + soundURL);
+    // If the sound is currently playing, pause it and rewind it
+    if (window.activeAudio[soundURL]) {
+        window.activeAudio[soundURL].pause();
+        window.activeAudio[soundURL].currentTime = 0;
+        delete window.activeAudio[soundURL];
+    }
 };
+// --------------------------------------------
+
+var p5Inst = new p5(null, 'sketch'); // This is line 1 of your original code
 
 var p5Inst = new p5(null, 'sketch');
 
