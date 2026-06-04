@@ -358,23 +358,23 @@ RWall.width = 10;
 RWall.height = 1000;
 RWall.visible = false;
 walls.add(RWall);
-var bossHealthHolder = createSprite(280, 50);
-bossHealthHolder.setAnimation("StartMenuBG");
-bossHealthHolder.height = 35;
-bossHealthHolder.width = 220;
+// Creates a 220x35 block. shapeColor makes it a solid color instead of an image.
+var bossHealthHolder = createSprite(280, 50, 220, 35);
+bossHealthHolder.shapeColor = "black";
 bossHealthHolder.visible = false;
-var GBBossHealth = createSprite(280, 50);
-GBBossHealth.setAnimation("Laser");
-GBBossHealth.height = 30;
+
+var GBBossHealth = createSprite(280, 50, 220, 30);
+GBBossHealth.shapeColor = "red";
 GBBossHealth.visible = false;
-var ElonBossHealth = createSprite(280, 50);
-ElonBossHealth.setAnimation("Laser");
-ElonBossHealth.height = 30;
+
+var ElonBossHealth = createSprite(280, 50, 220, 30);
+ElonBossHealth.shapeColor = "red";
 ElonBossHealth.visible = false;
-var JDBossHealth = createSprite(280, 50);
-JDBossHealth.setAnimation("Laser");
-JDBossHealth.height = 30;
+
+var JDBossHealth = createSprite(280, 50, 220, 30);
+JDBossHealth.shapeColor = "red";
 JDBossHealth.visible = false;
+      
 var difficultyLevelsChoose = 2;
 var difficultyLevels = createSprite(220, 350);
 difficultyLevels.scale = 0.5;
