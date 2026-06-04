@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 <head>
   <title>ICE Defense: Minneapolis</title>
@@ -6,37 +7,14 @@
 
   <script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
   <script src="gamelab-api.js"></script>
-
   <link href="gamelab.css" rel="stylesheet" type="text/css">
-
+  
   <script src="p5.js"></script>
   <script src="p5.play.js"></script>
   <script src="code.js"></script>
 
   <style>
-    body.expo {
-      background-color: black;
-    }
-
-    #sketch.expo.no-controls {
-      top: 82px;
-    }
-
-    html,
-    body {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background: black;
-    }
-
-    /* Hide mobile controls but keep them available for Game Lab */
-    #soft-buttons,
-    #studio-dpad-container {
-      display: none !important;
-    }
-
-html, body {
+    html, body {
         margin: 0;
         padding: 0;
         width: 100%;
@@ -64,39 +42,24 @@ html, body {
         max-height: 100%;
         object-fit: contain; 
     }
-    
+
+    /* Hide mobile controls but keep them available so the engine doesn't crash */
+    #soft-buttons,
+    #studio-dpad-container {
+      display: none !important;
+    }
   </style>
 </head>
 
-<body
-  class="web"
-  style="
-    margin:0;
-    overflow:hidden;
-    user-select:none;
-    -webkit-user-select:none;
-    -webkit-touch-callout:none;
-    position:fixed;
-    top:0;
-    left:0;
-    width:400px;
-    height:400px;
-  "
->
-  <div
-    id="sketch"
-    class="web"
-    style="position:absolute;"
-  ></div>
+<body>
+  <div id="sketch"></div>
 
-  <!-- Keep these so initMobileControls() doesn't crash -->
   <div id="soft-buttons">
     <button id="leftButton" disabled></button>
     <button id="rightButton" disabled></button>
     <button id="upButton" disabled></button>
     <button id="downButton" disabled></button>
   </div>
-
   <div id="studio-dpad-container"></div>
 
 </body>
