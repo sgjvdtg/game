@@ -14,27 +14,60 @@
   <script src="code.js"></script>
 
   <style>
-    html, body {
+    body.expo {
+      background-color: black;
+    }
+
+    #sketch.expo.no-controls {
+      top: 82px;
+    }
+
+    html,
+    body {
       margin: 0;
-      width: 100%;
-      height: 100%;
+      padding: 0;
       overflow: hidden;
       background: black;
     }
 
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    #sketch {
-      position: relative !important;
+    /* Hide mobile controls but keep them available for Game Lab */
+    #soft-buttons,
+    #studio-dpad-container {
+      display: none !important;
     }
   </style>
 </head>
 
-<body class="web">
-  <div id="sketch" class="web"></div>
+<body
+  class="web"
+  style="
+    margin:0;
+    overflow:hidden;
+    user-select:none;
+    -webkit-user-select:none;
+    -webkit-touch-callout:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:400px;
+    height:400px;
+  "
+>
+  <div
+    id="sketch"
+    class="web"
+    style="position:absolute;"
+  ></div>
+
+  <!-- Keep these so initMobileControls() doesn't crash -->
+  <div id="soft-buttons">
+    <button id="leftButton" disabled></button>
+    <button id="rightButton" disabled></button>
+    <button id="upButton" disabled></button>
+    <button id="downButton" disabled></button>
+  </div>
+
+  <div id="studio-dpad-container"></div>
+
 </body>
 </html>
