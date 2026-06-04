@@ -1,27 +1,29 @@
 // --- CUSTOM AUDIO ENGINE FOR GITHUB PAGES ---
-// This keeps track of playing sounds so we can stop them later
 window.activeAudio = {};
 
 window.playSound = function(soundURL, loop) {
-    // Create a new HTML5 audio element
-    var audio = new Audio(soundURL);
+    // Auto-fix missing 'assets/' prefix for boss music
+    if (!soundURL.startsWith("assets/")) {
+        soundURL = "assets/" + soundURL;
+    }
     
-    // Set it to loop if your code asks for it (like boss themes)
+    var audio = new Audio(soundURL);
     if (loop === true) {
         audio.loop = true;
     }
     
-    // Save it to our tracking list
     window.activeAudio[soundURL] = audio;
-    
-    // Play it (browsers require users to click the page before audio can play)
     audio.play().catch(function(error) {
         console.log("Waiting for user interaction to play: " + soundURL);
     });
 };
 
 window.stopSound = function(soundURL) {
-    // If the sound is currently playing, pause it and rewind it
+    // Auto-fix missing 'assets/' prefix to ensure the right track stops
+    if (!soundURL.startsWith("assets/")) {
+        soundURL = "assets/" + soundURL;
+    }
+    
     if (window.activeAudio[soundURL]) {
         window.activeAudio[soundURL].pause();
         window.activeAudio[soundURL].currentTime = 0;
@@ -29,8 +31,6 @@ window.stopSound = function(soundURL) {
     }
 };
 // --------------------------------------------
-
-var p5Inst = new p5(null, 'sketch'); // This is line 1 of your original code
 
 var p5Inst = new p5(null, 'sketch');
 
