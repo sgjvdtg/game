@@ -1,4 +1,10 @@
-
+// Override Game Lab sound functions to prevent crashes
+window.playSound = function(soundURL, loop) {
+    console.log("Sound bypassed: " + soundURL);
+};
+window.stopSound = function(soundURL) {
+    console.log("Stop sound bypassed: " + soundURL);
+};
 
 var p5Inst = new p5(null, 'sketch');
 
